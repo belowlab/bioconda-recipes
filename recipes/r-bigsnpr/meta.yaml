@@ -1,0 +1,105 @@
+{% set name = "r-bigsnpr" %}
+{% set version = "1.12.0" %}
+{% set vcommit = "be3c7fb179dea813f04423bf61763ee24fd93f15" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/privefl/bigsnpr/archive/{{ vcommit }}.tar.gz
+  sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+  # depends?
+    - r-base
+    - r-bigstatsr
+  # imports?
+    - r-bigassertr
+    - r-bigparser
+    - r-bigutilsr
+    - r-data.table
+    - r-doRNG
+    - r-foreach
+    - r-ggplot2
+    - r-magrittr
+    - r-Matrix
+    - r-methods
+    - r-Rcpp
+    - r-runonce
+    - r-stats
+    - r-vctrs
+    # linkingto?
+    - r-bigsparser
+    - r-bigstatsr
+    - r-RcppArmadillo
+    - r-rmio
+    - r-roptim
+    # suggests?
+    # bindata,
+    # covr,
+    # dbplyr (>= 1.4),
+    # dplyr,
+    # gaston,
+    # glue,
+    # Hmisc,
+    # microbenchmark,
+    # pcadapt (>= 4.1),
+    # quadprog,
+    # RhpcBLASctl,
+    # rmutil,
+    # RSpectra,
+    # RSQLite,
+    # R.utils,
+    # spelling, 
+    # testthat,
+    # tibble,
+    # xgboost
+
+  run:
+    - r-base
+    - r-bigassertr
+    - r-bigparser
+    - r-bigsparser
+    - r-bigstatsr
+    - r-bigstatsr
+    - r-bigutilsr
+    - r-data.table
+    - r-doRNG
+    - r-foreach
+    - r-ggplot2
+    - r-magrittr
+    - r-Matrix
+    - r-methods
+    - r-Rcpp
+    - r-RcppArmadillo
+    - r-rmio
+    - r-roptim
+    - r-runonce
+    - r-stats
+    - r-vctrs
+
+test:
+  commands:
+    - $R -e "library(\"bigsnpr\")"
+
+about:
+  home: https://privefl.github.io/bigsnpr
+  license: GPL-3.0-only
+  license_family: GPL3
+  summary: bigsnpr - Analysis of Massive SNP Arrays
+  description: |
+    Easy-to-use, efficient, flexible and scalable tools for analyzing massive SNP arrays. 
+    Privé et al. (2018) <doi:10.1093/bioinformatics/bty185>.
+  dev_url: https://github.com/privefl/bigsnpr
+
+extra:
+  recipe-maintainers:
+    - pettyalex
